@@ -122,6 +122,16 @@ export default function Summary() {
             title="Thank you!"
             desc="Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com."
           />
+          <div className=" mt-10 text-Coolgray text-lg font-medium">
+            Challenge by
+            <a
+              href="https://www.frontendmentor.io?ref=challenge"
+              target="_blank"
+            >
+              Frontend Mentor
+            </a>
+            . Coded by <a href="#">Paweł Sarzyński</a>.
+          </div>
         </div>
       </FadeOut>
     </>
