@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Ubuntu } from "next/font/google";
+import { NavBar } from "./components/NavBar";
+import { ActionButton } from "./components/ActionButton";
+import { ActionButtonMobile } from "./components/ActionButtonMobile";
+import { NextRequestProvider, UserSettingsProvider } from "./context";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +20,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <NextRequestProvider>
+        <UserSettingsProvider>
+          <body
+            className={`${ubuntu.className} bg-Magnolia flex flex-col overflow-hidden lg:items-center lg:justify-center h-dvh relative`}
+          >
+            <div className=" lg:bg-White rounded-xl lg:p-5 flex flex-col lg:flex-row justify-center items-center lg:items-stretch">
+              <NavBar />
+              <div className="relative flex flex-col lg:mx-24 w-full lg:w-[30rem] my-7">
+                <div className=" absolute z-20 lg:block right-10 left-10 top-[-15rem] lg:right-0 lg:left-0 lg:top-0 mx-auto bg-White lg:bg-opacity-0 p-5 rounded-lg">
+                  {children}
+                </div>
+                <ActionButton />
+              </div>
+            </div>
+            <ActionButtonMobile />
+          </body>
+        </UserSettingsProvider>
+      </NextRequestProvider>
     </html>
   );
 }
